@@ -1,5 +1,11 @@
 package com.smart.repo;
 
-public interface IClienteRepo {
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.stereotype.Repository;
+
+import com.smart.entity.Cliente;
+
+@Repository
+public interface IClienteRepo extends JpaRepository<Cliente,Integer> {
 
 }

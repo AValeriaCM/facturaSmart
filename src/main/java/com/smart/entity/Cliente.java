@@ -1,5 +1,8 @@
 package com.smart.entity;
 
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.ForeignKey;
@@ -13,8 +16,11 @@ import javax.validation.constraints.Email;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Pattern;
 
+import org.springframework.format.annotation.DateTimeFormat;
+import org.springframework.format.annotation.DateTimeFormat.ISO;
+
 @Entity
-@Table
+@Table(name = "cliente")
 public class Cliente {
 
 	/**
@@ -29,13 +35,17 @@ public class Cliente {
 	@Column(name = "nombre", nullable = false, length = 45)
 	private String nombre;
 
-	@NotNull(message = "El apellido es requerido")
+	@NotNull(message = "El campo apellido es requerido")
 	@Column(name = "apellido", nullable = false, length = 45)
 	private String apellido;
 
 	@NotNull(message = "El campo direccion es requerido")
 	@Column(name = "direccion", nullable = false)
 	private String direccion;
+	
+	@DateTimeFormat(pattern = "dd/MM/yyyy", iso = ISO.DATE)
+	@Column(name = "fecha_nacimiento")
+	private LocalDateTime fecha_nacimiento;
 
 	@Pattern(regexp = "[0-9]+", message = "El telefono solo puede tener números")
 	@Column(name = "telefono", nullable = false)

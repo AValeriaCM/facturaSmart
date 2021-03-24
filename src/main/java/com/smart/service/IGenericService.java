@@ -2,6 +2,9 @@ package com.smart.service;
 
 import java.util.List;
 
+import org.springframework.stereotype.Service;
+
+@Service
 public interface IGenericService<T, TDto> {
 
 	public List<T> listar();

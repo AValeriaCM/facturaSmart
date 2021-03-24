@@ -19,8 +19,7 @@ public class FacturaServiceImp implements IFacturaService{
 
 	@Override
 	public List<Factura> listar() {
-		// TODO Auto-generated method stub
-		return null;
+		return repoFactura.findAll();
 	}
 
 	@Override
@@ -30,11 +29,14 @@ public class FacturaServiceImp implements IFacturaService{
 	}
 
 	@Override
-	public Factura guardar(Factura t) {
+	public Factura guardar(Factura fact) {
 		
+		Factura factura = new Factura();
 		
-		
-		return null;
+		factura.setCliente(fact.getCliente());
+		factura.setFecha(fact.getFecha());
+
+		return repoFactura.save(factura);
 	}
 
 	@Override

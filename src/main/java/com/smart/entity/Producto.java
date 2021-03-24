@@ -17,7 +17,7 @@ public class Producto {
 	 */
 
 	@Id
-	@GeneratedValue(strategy = GenerationType.SEQUENCE)
+	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Integer id_producto;
 
 	@NotNull(message = "El nombre es requerido")

@@ -25,7 +25,7 @@ public class Detalle {
 
 	@ManyToOne
 	@JoinColumn(name = "id_factura")
-	private Integer id_factura;
+	private Factura factura;
 
 	@ManyToOne
 	@JoinColumn(name = "id_producto", foreignKey = @ForeignKey(name = "FK_producto"))
@@ -59,16 +59,16 @@ public class Detalle {
 	 * 
 	 * @return
 	 */
-	public Integer getId_factura() {
-		return id_factura;
+	public Factura getFactura() {
+		return factura;
 	}
 
 	/**
 	 * 
 	 * @param id_factura
 	 */
-	public void setId_factura(Integer id_factura) {
-		this.id_factura = id_factura;
+	public void setId_factura(Factura factura) {
+		this.factura = factura;
 	}
 
 	/**

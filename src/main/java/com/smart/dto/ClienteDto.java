@@ -1,7 +1,9 @@
 package com.smart.dto;
 
 import java.io.Serializable;
+import java.time.LocalDate;
 
+import javax.validation.constraints.Email;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
@@ -15,36 +17,36 @@ public class ClienteDto implements Serializable{
 	@Size(min = 2,  max = 25, message = "Nombre entre 2 y 25 carácteres")
 	private String nombre;
 
-	@NotNull(message = "Nombre es campo obligatorio")
+	@NotNull(message = "Apellido es campo obligatorio")
 	@Size(min = 2,  max = 25, message = "Nombre entre 2 y 25 carácteres")
 	private String apellido;
 	
-	@NotNull(message = "Nombre es campo obligatorio")
+	@NotNull(message = "Direccion es campo obligatorio")
 	@Size(min = 2,  max = 25, message = "Nombre entre 2 y 25 carácteres")
 	private String direccion;
 	
-	@NotNull(message = "Nombre es campo obligatorio")
+	@NotNull(message = "Fecha es campo obligatorio")
 	@Size(min = 2,  max = 25, message = "Nombre entre 2 y 25 carácteres")
-	private String fecha_nacimiento;
+	private LocalDate fecha_nacimiento;
+	
+	@NotNull(message = "Telefono es campo obligatorio")
+	@Size(min = 2,  max = 25, message = "Nombre entre 2 y 25 carácteres")
+	private Integer telefono;
 	
 	@NotNull(message = "Nombre es campo obligatorio")
 	@Size(min = 2,  max = 25, message = "Nombre entre 2 y 25 carácteres")
-	private String telefono;
-	
-	@NotNull(message = "Nombre es campo obligatorio")
-	@Size(min = 2,  max = 25, message = "Nombre entre 2 y 25 carácteres")
-	private String email;
+	private Email email;
 	
 	/*
 	 * Constructor de la clase
 	 */
 	public ClienteDto(Integer id_cliente,
 			@NotNull(message = "Nombre es campo obligatorio") @Size(min = 2, max = 25, message = "Nombre entre 2 y 25 carácteres") String nombre,
-			@NotNull(message = "Nombre es campo obligatorio") @Size(min = 2, max = 25, message = "Nombre entre 2 y 25 carácteres") String apellido,
-			@NotNull(message = "Nombre es campo obligatorio") @Size(min = 2, max = 25, message = "Nombre entre 2 y 25 carácteres") String direccion,
-			@NotNull(message = "Nombre es campo obligatorio") @Size(min = 2, max = 25, message = "Nombre entre 2 y 25 carácteres") String fecha_nacimiento,
-			@NotNull(message = "Nombre es campo obligatorio") @Size(min = 2, max = 25, message = "Nombre entre 2 y 25 carácteres") String telefono,
-			@NotNull(message = "Nombre es campo obligatorio") @Size(min = 2, max = 25, message = "Nombre entre 2 y 25 carácteres") String email) {
+			@NotNull(message = "Apellido es campo obligatorio") @Size(min = 2, max = 25, message = "Nombre entre 2 y 25 carácteres") String apellido,
+			@NotNull(message = "Direccion es campo obligatorio") @Size(min = 2, max = 25, message = "Nombre entre 2 y 25 carácteres") String direccion,
+			@NotNull(message = "Fecha es campo obligatorio") @Size(min = 2, max = 25, message = "Nombre entre 2 y 25 carácteres") LocalDate fecha_nacimiento,
+			@NotNull(message = "Telefono es campo obligatorio") @Size(min = 2, max = 25, message = "Nombre entre 2 y 25 carácteres") Integer telefono,
+			@NotNull(message = "Nombre es campo obligatorio") @Size(min = 2, max = 25, message = "Nombre entre 2 y 25 carácteres") Email email) {
 		super();
 		this.id_cliente = id_cliente;
 		this.nombre = nombre;
@@ -55,6 +57,7 @@ public class ClienteDto implements Serializable{
 		this.email = email;
 	}
 
+
 	/*
 	 * Getters y setters de los campos del Dto cliente
 	 */
@@ -62,6 +65,7 @@ public class ClienteDto implements Serializable{
 		return id_cliente;
 	}
 
+	
 	public void setId_cliente(Integer id_cliente) {
 		this.id_cliente = id_cliente;
 	}
@@ -90,30 +94,37 @@ public class ClienteDto implements Serializable{
 		this.direccion = direccion;
 	}
 
-	public String getFecha_nacimiento() {
+
+	public LocalDate getFecha_nacimiento() {
 		return fecha_nacimiento;
 	}
 
-	public void setFecha_nacimiento(String fecha_nacimiento) {
+
+	public void setFecha_nacimiento(LocalDate fecha_nacimiento) {
 		this.fecha_nacimiento = fecha_nacimiento;
 	}
 
-	public String getTelefono() {
+
+	public Integer getTelefono() {
 		return telefono;
 	}
 
-	public void setTelefono(String telefono) {
+
+	public void setTelefono(Integer telefono) {
 		this.telefono = telefono;
 	}
 
-	public String getEmail() {
+
+	public Email getEmail() {
 		return email;
 	}
 
-	public void setEmail(String email) {
+
+	public void setEmail(Email email) {
 		this.email = email;
 	}
 
+	
 	
 	
 	

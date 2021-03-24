@@ -1,5 +1,6 @@
 package com.smart.entity;
 
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 
 import javax.persistence.Column;
@@ -36,7 +37,7 @@ public class Factura {
 	
 	@DateTimeFormat(pattern = "dd/MM/yyyy", iso = ISO.DATE)
 	@Column(name = "fecha")
-	private LocalDateTime fecha;
+	private LocalDate fecha;
 
 	/**
 	 * 
@@ -71,14 +72,14 @@ public class Factura {
 	 * 
 	 * @return
 	 */
-	public LocalDateTime getFecha() {
+	public LocalDate getFecha() {
 		return fecha;
 	}
 	/**
 	 * 
 	 * @param fecha
 	 */
-	public void setFecha(LocalDateTime fecha) {
+	public void setFecha(LocalDate fecha) {
 		this.fecha = fecha;
 	}
 	
