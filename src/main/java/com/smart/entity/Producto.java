@@ -7,9 +7,12 @@ import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
+import javax.persistence.ForeignKey;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
@@ -29,6 +32,10 @@ public class Producto implements Serializable {
 	@NotNull(message = "El nombre es requerido")
 	@Column(name = "nombre", nullable = false, length = 45)
 	private String nombre;
+	
+	@ManyToOne
+	@JoinColumn(name = "id_detalle", foreignKey = @ForeignKey(name = "FK_detalle"))
+	private Detalle detalle;
 
 	@NotNull(message = "Precio es requerido")
 	@Column(name = "precio", nullable = false, length = 45)
@@ -38,9 +45,6 @@ public class Producto implements Serializable {
 	@Column(name = "stock", nullable = false, length = 45)
 	private Integer stock;
 	
-	@OneToMany(mappedBy = "producto", orphanRemoval=true, cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-	private List<Detalle> listaDetalles;
-
 	/**
 	 * 
 	 * @return
@@ -101,14 +105,14 @@ public class Producto implements Serializable {
 		this.stock = stock;
 	}
 
-	public List<Detalle> getListaDetalles() {
-		return listaDetalles;
+	public Detalle getDetalle() {
+		return detalle;
 	}
 
-	public void setListaDetalles(List<Detalle> listaDetalles) {
-		this.listaDetalles = listaDetalles;
+	public void setDetalle(Detalle detalle) {
+		this.detalle = detalle;
 	}
-	
+
 	
 	
 

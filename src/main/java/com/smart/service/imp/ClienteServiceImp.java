@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 import com.smart.dto.ClienteDto;
 import com.smart.dto.ProductoDto;
 import com.smart.entity.Cliente;
+import com.smart.entity.Factura;
 import com.smart.entity.Producto;
 import com.smart.repo.IClienteRepo;
 import com.smart.service.IClienteService;
@@ -38,7 +39,14 @@ public class ClienteServiceImp implements IClienteService{
 		cliente.setApellido(cli.getApellido());
 		cliente.setDireccion(cli.getDireccion());
 		cliente.setEmail(cli.getEmail());
+		cliente.setFecha_nacimiento(cli.getFecha_nacimiento());
 		cliente.setTelefono(cli.getTelefono());
+		
+		if(cli.getListaFacturas() != null) {
+			for(Factura factura: cli.getListaFacturas()) {
+				factura.setCliente(cli);
+			}		
+		}
 		
 		return repoCliente.save(cliente);
 	}

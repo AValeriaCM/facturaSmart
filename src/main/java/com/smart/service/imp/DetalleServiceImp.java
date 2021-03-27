@@ -18,14 +18,14 @@ import com.smart.exception.ArgumentRequiredException;
 import com.smart.exception.NotFoundException;
 
 @Service
-public class DetalleServiceImp implements IDetalleService{
-	
+public class DetalleServiceImp implements IDetalleService {
+
 	@Autowired
 	private IDetalleRepo repoDetalle;
-	
+
 	@Autowired
 	private IProductoRepo repoProducto;
-	
+
 	@Autowired
 	private IFacturaRepo repoFactura;
 
@@ -42,41 +42,38 @@ public class DetalleServiceImp implements IDetalleService{
 
 	@Override
 	public Detalle guardar(Detalle det) {
-		
+
 		Detalle detalle = new Detalle();
-		
+
 		Factura factura = new Factura();
-		
+
 		Producto producto = new Producto();
 		
-		if(det.getProducto() == null) {
-			throw new ArgumentRequiredException("Se requiere un producto para realizar esta accion!");
-		} else {
-			Producto prod = repoProducto.findById(det.getProducto().getId_producto()).orElseThrow(
-					() -> new NotFoundException("Producto no existe"));
+		detalle.setCantidad(det.getCantidad());
+		detalle.setPrecio(det.getPrecio());
 
-			detalle.setCantidad(det.getCantidad());
-			detalle.setPrecio(det.getPrecio());
-			detalle.setProducto(prod);
+		if (det.getListaProductos() != null) {
+			for (Producto produc : det.getListaProductos()) {
+				det.setProducto(produc);
+			}
 		}
-		
-		if(det.getFactura() == null) {
+
+		if (det.getFactura() == null) {
 			throw new ArgumentRequiredException("Se requiere una factura para realizar esta accion!");
 		} else {
-			Factura fact = repoFactura.findById(det.getFactura().getNum_factura()).orElseThrow(
-					() -> new NotFoundException("Factura no existe"));
+			Factura fact = repoFactura.findById(det.getFactura().getNum_factura())
+					.orElseThrow(() -> new NotFoundException("Factura no existe"));
 			detalle.setFactura(fact);
-					
+
 		}
-		
-		
+
 		return repoDetalle.save(detalle);
 	}
 
 	@Override
 	public void eliminar(Integer id) {
 		// TODO Auto-generated method stub
-		
+
 	}
 
 	@Override

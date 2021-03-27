@@ -50,7 +50,7 @@ public class Cliente implements Serializable{
 	
 	@DateTimeFormat(pattern = "dd/MM/yyyy", iso = ISO.DATE)
 	@Column(name = "fecha_nacimiento")
-	private LocalDateTime fecha_nacimiento;
+	private String fecha_nacimiento;
 
 	@Pattern(regexp = "[0-9]+", message = "El telefono solo puede tener números")
 	@Column(name = "telefono", nullable = false)
@@ -165,14 +165,14 @@ public class Cliente implements Serializable{
 	 * 
 	 * @return
 	 */
-	public LocalDateTime getFecha_nacimiento() {
+	public String getFecha_nacimiento() {
 		return fecha_nacimiento;
 	}
 	/**
 	 * 
 	 * @param fecha_nacimiento
 	 */
-	public void setFecha_nacimiento(LocalDateTime fecha_nacimiento) {
+	public void setFecha_nacimiento(String fecha_nacimiento) {
 		this.fecha_nacimiento = fecha_nacimiento;
 	}
 	/**
