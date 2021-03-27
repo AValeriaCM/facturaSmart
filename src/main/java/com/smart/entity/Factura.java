@@ -1,16 +1,21 @@
 package com.smart.entity;
 
+import java.io.Serializable;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.ForeignKey;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 import org.springframework.format.annotation.DateTimeFormat;
@@ -20,15 +25,15 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 
 
 @Entity
-@Table
-public class Factura {
+@Table(name = "factura")
+public class Factura implements Serializable {
 
 	/**
 	 * Inicializacion de campos
 	 */
 
 	@Id
-	@GeneratedValue(strategy = GenerationType.SEQUENCE)
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer num_factura;
 	
 	@ManyToOne
@@ -38,6 +43,9 @@ public class Factura {
 	@DateTimeFormat(pattern = "dd/MM/yyyy", iso = ISO.DATE)
 	@Column(name = "fecha")
 	private LocalDate fecha;
+	
+	@OneToMany(mappedBy = "factura", orphanRemoval=true, cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+	private List<Detalle> listaDetalles;
 
 	/**
 	 * 
@@ -82,6 +90,21 @@ public class Factura {
 	public void setFecha(LocalDate fecha) {
 		this.fecha = fecha;
 	}
+	/**
+	 * 
+	 * @return
+	 */
+	public List<Detalle> getListaDetalles() {
+		return listaDetalles;
+	}
+	/**
+	 * 
+	 * @param listaDetalles
+	 */
+	public void setListaDetalles(List<Detalle> listaDetalles) {
+		this.listaDetalles = listaDetalles;
+	}
+	
 	
 	
 }

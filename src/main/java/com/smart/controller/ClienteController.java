@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.smart.entity.Cliente;
@@ -24,16 +25,14 @@ import com.smart.service.IClienteService;
 import io.swagger.annotations.Api;
 
 @Validated
-@Controller
 @RestController
 @RequestMapping("/clientes")
-@Api(value = "REST informacion de cliente")
 public class ClienteController {
 	
 	@Autowired
 	private IClienteService clienteService;
 	
-	@GetMapping("/listar")
+	@RequestMapping(value = "/listar", method = RequestMethod.GET)
 	public ResponseEntity<List<Cliente>> listarClientes(){
 		List<Cliente> listaClientes = clienteService.listar();
 		return new ResponseEntity<List<Cliente>>(listaClientes, HttpStatus.OK);

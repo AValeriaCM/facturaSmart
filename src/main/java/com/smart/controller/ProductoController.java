@@ -30,10 +30,8 @@ import io.swagger.annotations.Api;
 
 
 @Validated
-@Controller
 @RestController
 @RequestMapping("/productos")
-@Api(value = "REST informacion de producto")
 public class ProductoController {
 	
 	@Autowired

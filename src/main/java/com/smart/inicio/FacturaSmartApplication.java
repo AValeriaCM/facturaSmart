@@ -10,12 +10,11 @@ import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 import org.springframework.scheduling.annotation.EnableScheduling;
 
 @SpringBootApplication
-@ComponentScan("com.smart") 
-@EntityScan(basePackages = {"com.smart"})
-@EnableConfigurationProperties
-@EnableAutoConfiguration
-@EnableJpaRepositories(basePackages = "com.smart.repo")
-@EnableScheduling
+@ComponentScan(basePackages = {"com.smart.controller", "com.smart.dto",
+								 "com.smart.exception",
+								 "com.smart.service", "com.smart.service.imp"})
+@EnableJpaRepositories(basePackages = {"com.smart.repo"})
+@EntityScan(basePackages = {"com.smart.entity"})
 public class FacturaSmartApplication {
 
 	public static void main(String[] args) {

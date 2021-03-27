@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.smart.dto.FacturaDto;
 import com.smart.entity.Cliente;
 import com.smart.entity.Factura;
 import com.smart.repo.IFacturaRepo;
@@ -43,6 +44,24 @@ public class FacturaServiceImp implements IFacturaService{
 	public void eliminar(Integer id) {
 		// TODO Auto-generated method stub
 		
+	}
+
+	@Override
+	public Factura guardarDto(FacturaDto facturaDto) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public Factura editarDto(FacturaDto facturaDto) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public Factura editarFactura(Factura factura) {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 }

@@ -16,7 +16,7 @@ import com.smart.service.IProductoService;
 @Service
 public class ClienteServiceImp implements IClienteService{
 
-	@Autowired
+	@Autowired(required = true)
 	private IClienteRepo repoCliente;
 
 	@Override

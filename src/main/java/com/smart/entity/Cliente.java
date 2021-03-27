@@ -1,16 +1,21 @@
 package com.smart.entity;
 
+import java.io.Serializable;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.ForeignKey;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotNull;
@@ -21,14 +26,14 @@ import org.springframework.format.annotation.DateTimeFormat.ISO;
 
 @Entity
 @Table(name = "cliente")
-public class Cliente {
+public class Cliente implements Serializable{
 
 	/**
 	 * Inicializacion de campos
 	 */
 
 	@Id
-	@GeneratedValue(strategy = GenerationType.SEQUENCE)
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id_cliente;
 
 	@NotNull(message = "El nombre es requerido")
@@ -55,6 +60,9 @@ public class Cliente {
 	@Email(message = "el email debe ser valido")
 	@Column(name = "email", nullable = false)
 	private String email;
+	
+	@OneToMany(mappedBy = "cliente", orphanRemoval=true, cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+	private List<Factura> listaFacturas;
 
 	/**
 	 * Getters y setters de los campos
@@ -153,5 +161,35 @@ public class Cliente {
 	public void setEmail(String email) {
 		this.email = email;
 	}
+	/**
+	 * 
+	 * @return
+	 */
+	public LocalDateTime getFecha_nacimiento() {
+		return fecha_nacimiento;
+	}
+	/**
+	 * 
+	 * @param fecha_nacimiento
+	 */
+	public void setFecha_nacimiento(LocalDateTime fecha_nacimiento) {
+		this.fecha_nacimiento = fecha_nacimiento;
+	}
+	/**
+	 * 
+	 * @return
+	 */
+	public List<Factura> getListaFacturas() {
+		return listaFacturas;
+	}
+	/**
+	 * 
+	 * @param listaFacturas
+	 */
+	public void setListaFacturas(List<Factura> listaFacturas) {
+		this.listaFacturas = listaFacturas;
+	}
+	
+	
 
 }

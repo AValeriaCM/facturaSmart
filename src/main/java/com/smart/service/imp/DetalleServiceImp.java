@@ -65,7 +65,7 @@ public class DetalleServiceImp implements IDetalleService{
 		} else {
 			Factura fact = repoFactura.findById(det.getFactura().getNum_factura()).orElseThrow(
 					() -> new NotFoundException("Factura no existe"));
-			detalle.setId_factura(fact);
+			detalle.setFactura(fact);
 					
 		}
 		
